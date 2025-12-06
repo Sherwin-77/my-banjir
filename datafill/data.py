@@ -6,7 +6,6 @@ from shapely import Polygon
 from datafill.config import RAW_DATA_PATH, PARSED_DATA_PATH
 
 TARGET_CRS = "EPSG:32748"
-MAX_CELL_SIZE = 10_000
 
 def parse_data():
     if not os.path.exists(RAW_DATA_PATH):
@@ -19,10 +18,10 @@ def parse_data():
         crs="EPSG:4326"
     )
     
-    xmin = 94.12166580738058
-    ymin = -7.620859226011504
-    xmax = 107.34095494083526
-    ymax = 7.0052286958747345
+    xmin = 94.5
+    ymin = -11.5
+    xmax = 141.5
+    ymax = 6.5
     aoi = Polygon([
         (xmin, ymin), (xmax, ymin),
         (xmax, ymax), (xmin, ymax)

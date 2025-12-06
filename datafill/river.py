@@ -23,7 +23,7 @@ def parse_river():
 
     gdf['distance_to_river'] = gdf.geometry.apply(lambda geo: geo.distance(unified_river))
     
-    gdf.to_csv(RIVER_DATA_PATH, index=False)
+    gdf.drop(columns="geometry").to_csv(RIVER_DATA_PATH, index=False)
     print(f"Successfully saved rain data with river distances to {RIVER_DATA_PATH}")
 
 
