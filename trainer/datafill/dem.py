@@ -85,8 +85,8 @@ def download_one_tile(dem_with_slope: ee.Image, lon0: float, lat0: float, lon1: 
 
 
 def download_tiles():
-    initialize_gee()
-    dem_with_slope = build_dem_with_slope_image()
+    use_gee = False
+    dem_with_slope = None
 
     lon_steps = list(frange(west, east, tile_deg))
     lat_steps = list(frange(south, north, tile_deg))
@@ -106,10 +106,16 @@ def download_tiles():
                 print(f"[FIX] Removing corrupted/incomplete tile: {tile_path}")
                 tile_path.unlink()
 
+            if not use_gee:
+                initialize_gee()
+                dem_with_slope = build_dem_with_slope_image()
+                use_gee = True
+
+
             print(f"Downloading GEE tile {tile_path.name} for bounds {lon0},{lat0},{lon1},{lat1}")
 
             try:
-                download_one_tile(dem_with_slope, lon0, lat0, lon1, lat1, tile_path)
+                download_one_tile(dem_with_slope, lon0, lat0, lon1, lat1, tile_path)  # type: ignore
             except Exception as exc:
                 print(f"[ERROR] Download failed for tile {tile_path}: {exc}")
                 if tile_path.exists():
