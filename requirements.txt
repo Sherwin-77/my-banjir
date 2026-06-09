@@ -1,0 +1,15 @@
+pandas~=2.3.3
+googlemaps~=4.10.0
+python-dotenv~=1.1.1
+rasterio~=1.4.3
+geopandas~=1.1.1
+scikit-learn~=1.7.2
+imbalanced-learn~=0.14.0
+streamlit~=1.56.0
+folium~=0.20.0
+streamlit-folium~=0.27.1
+openpyxl~=3.1.5
+altair~=5.5.0
+earthengine-api~=1.7.21
+geemap~=0.37.2
+geedim~=2.0.0
